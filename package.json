@@ -1,0 +1,16 @@
+{
+  "name": "audio-visualizer",
+  "version": "1.0.0",
+  "description": "ThreeJS visualizer of mic input or audio files",
+  "main": "index.js",
+  "scripts": {
+    "dev": "esbuild src/index.ts --outfile=dist/index.js --bundle --loader:.ts=ts --serve=localhost:8000 --servedir=.",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Silas",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.14.25",
+    "three": "^0.138.3"
+  }
+}
