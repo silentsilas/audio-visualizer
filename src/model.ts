@@ -11,7 +11,7 @@ export interface GLTF {
   asset: object;
 }
 
-export function Load(): Promise<GLTF> {
+export function LoadModel(): Promise<GLTF> {
   const loadingDiv = document.getElementById("loader");
   return new Promise((resolve, reject) => {
     loader.load(

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "esbuild src/index.ts --outfile=dist/index.js --bundle --loader:.ts=ts --serve=localhost:8000 --servedir=.",
     "lint": "eslint . --ext .ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --loader:.ts=ts"
   },
   "author": "Silas",
   "license": "MIT",
