@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Audio Visualizer</title>
   </head>
-  <body>
-	<script src="dist/index.js"></script>
+  <body style="margin: 0; background: black">
+    <div id="container">
+      <div
+        id="loader"
+        style="
+          color: #efefef;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "
+      >
+        Loading model: 0%
+      </div>
+    </div>
+    <div
+      style="
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        color: #efefef;
+        font-size: 10px;
+        transform: translateX(-50%);
+        max-width: 800px;
+        width: 100%;
+      "
+    >
+      <div style="padding: 8px">
+        "Low Poly Human Hands (All Quads)" (https://skfb.ly/WuXz) by Jeremy E.
+        Grayson is licensed under Creative Commons Attribution
+        (http://creativecommons.org/licenses/by/4.0/).
+      </div>
+    </div>
+    <script src="dist/index.js"></script>
   </body>
 </html>

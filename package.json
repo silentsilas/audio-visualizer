@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "dev": "esbuild src/index.ts --outfile=dist/index.js --bundle --loader:.ts=ts --serve=localhost:8000 --servedir=.",
+    "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Silas",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "esbuild": "^0.14.25",
+    "eslint": "^8.10.0",
     "three": "^0.138.3"
   }
 }
