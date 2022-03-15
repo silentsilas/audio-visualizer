@@ -12,10 +12,13 @@
   "author": "Silas",
   "license": "MIT",
   "devDependencies": {
+    "@types/three": "^0.138.0",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "esbuild": "^0.14.25",
     "eslint": "^8.10.0",
+    "esm-seedrandom": "^3.0.5",
+    "parse-srt": "^1.0.0-alpha",
     "three": "^0.138.3"
   }
 }
