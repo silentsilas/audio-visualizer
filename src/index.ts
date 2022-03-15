@@ -104,9 +104,6 @@ async function init() {
       "/static/who_am_i_with_music.mp3",
       1
     );
-    audio.onEnded = () => {
-      document.getElementById("credits").style.display = "block";
-    };
     CORE.srt = await loadSRT();
     DISTORTION.audioAnalyser = new AudioAnalyser(audio, 512);
 
@@ -236,6 +233,10 @@ function updateSubtitles(delta: number) {
   });
 
   if (!found) CORE.subtitleDiv.innerHTML = "";
+
+  if (CORE.elapsedTime > 70) {
+    document.getElementById("credits").style.display = "block";
+  }
 }
 
 function onWindowResize() {
