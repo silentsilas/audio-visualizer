@@ -1,6 +1,6 @@
 ## ThreeJS Audio Visualizer
 
-Currently a work in progress. It will be able to take in an MP3 file, and distort the imported 3D hand model along to the highs and lows.
+A virtual spoken word exhibit. Objects animate along to the frequencies of the background music while a hand model distorts to the volume of the spoken word.
 
 ## Development
 

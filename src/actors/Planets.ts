@@ -6,8 +6,16 @@ import {
   SphereBufferGeometry,
   Vector3,
 } from "three";
-import { calculateSoundAverages } from "../audio";
+import { calculateSoundAverages } from "../utils/audioUtils";
 
+export interface Planet extends Mesh {
+  geometry: SphereBufferGeometry;
+  material: MeshToonMaterial;
+  originalPosition?: Vector3;
+  offsetY?: number;
+  angleSpeed?: number;
+  angle?: number;
+}
 export class Planets {
   meshes: Array<Planet>;
   analyser: AudioAnalyser;
@@ -55,13 +63,4 @@ export class Planets {
       planet.angle += delta * planet.angleSpeed;
     });
   }
-}
-
-export interface Planet extends Mesh {
-  geometry: SphereBufferGeometry;
-  material: MeshToonMaterial;
-  originalPosition?: Vector3;
-  offsetY?: number;
-  angleSpeed?: number;
-  angle?: number;
 }

@@ -1,6 +1,18 @@
 import { AudioAnalyser, AudioListener } from "three";
-import { LoadAudio } from "../audio";
+import { LoadAudio } from "../utils/loaders";
 
+type SRTParser = {
+  (srt: string): SRT[];
+};
+
+type SRT = {
+  id: number;
+  start: number;
+  end: number;
+  text: string;
+};
+
+type ClickCallback = () => void;
 export class Jukebox {
   parser: SRTParser;
   listener: AudioListener;
@@ -26,14 +38,14 @@ export class Jukebox {
     const music = await LoadAudio(
       this.listener,
       "/static/music/space_chillout.mp3",
-      1,
+      0.5,
       "music",
-      true
+      false
     );
     const poem = await LoadAudio(
       this.listener,
       "/static/music/who_am_i.mp3",
-      1,
+      0.7,
       "poem",
       false
     );
@@ -43,13 +55,11 @@ export class Jukebox {
     const poemAnalyser = new AudioAnalyser(poem, 512);
 
     const startButton = document.getElementById("startButton");
-    startButton.style.display = "block";
     startButton.addEventListener("click", () => {
       silence.play();
 
       music.play();
       poem.play();
-      //   CORE.playing = true;
       startButton.remove();
       clickCallback();
     });
@@ -79,16 +89,3 @@ export class Jukebox {
     }
   }
 }
-
-type SRTParser = {
-  (srt: string): SRT[];
-};
-
-type SRT = {
-  id: number;
-  start: number;
-  end: number;
-  text: string;
-};
-
-type ClickCallback = () => void;

@@ -12,7 +12,6 @@ import {
   PerspectiveCamera,
 } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import { LoadModel } from "./model";
 import { prng_alea } from "esm-seedrandom";
 import parseSRT from "parse-srt";
 import { Planets } from "./actors/Planets";
@@ -20,6 +19,20 @@ import { OrbitCamera } from "./actors/OrbitCamera";
 import { Hand } from "./actors/Hand";
 import { OrbitLight } from "./actors/OrbitLight";
 import { Jukebox } from "./actors/Jukebox";
+import { LoadModel } from "./utils/loaders";
+
+interface CORE {
+  renderer: WebGLRenderer;
+  scene: Scene;
+  clock: Clock;
+  rng: RandomNumberGenerator;
+  playing: boolean;
+  audioListener: AudioListener;
+}
+
+export type RandomNumberGenerator = {
+  (): number;
+};
 
 const CORE: CORE = {
   renderer: null,
@@ -38,7 +51,9 @@ let HAND: Hand;
 let PLANETS: Planets;
 let JUKEBOX: Jukebox;
 
-init().then(() => animate());
+init()
+  .then(() => animate())
+  .catch((err) => console.warn(err));
 
 async function init() {
   const container = document.getElementById("container");
@@ -70,13 +85,15 @@ async function init() {
         CORE.playing = true;
       });
     CORE.scene.add(poem);
-    ORBIT_LIGHT.light.add(music);
+    CORE.scene.add(music);
     const model = await LoadModel();
     initializeModel(model, poemAnalyser);
     initializeStars();
     ORBIT_CAMERA.update(0, HAND.mesh.position);
     PLANETS = new Planets(musicAnalyser);
     PLANETS.meshes.forEach((planet) => CORE.scene.add(planet));
+    document.getElementById("loader").innerHTML = "";
+    document.getElementById("startButton").style.display = "block";
   } catch (err) {
     console.warn(err);
   }
@@ -133,16 +150,3 @@ function onWindowResize() {
 
   CORE.renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
-interface CORE {
-  renderer: WebGLRenderer;
-  scene: Scene;
-  clock: Clock;
-  rng: RandomNumberGenerator;
-  playing: boolean;
-  audioListener: AudioListener;
-}
-
-export type RandomNumberGenerator = {
-  (): number;
-};
