@@ -11,7 +11,6 @@ export class OrbitCamera {
     this.angularSpeed = MathUtils.degToRad(20);
     this.angle = 0;
     this.radius = 5;
-    console.log(this.angularSpeed);
   }
 
   update(delta: number, lookAt: Vector3) {
